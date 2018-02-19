@@ -2,11 +2,10 @@ import regex
 from itertools import cycle
 
 def get_opposite(shimo):
+    number = list(reversed(range(1, 9)))
     if shimo[0].isupper():
-        number = list(reversed(range(1, 9)))
         return shimo[0].lower() + str(number[int(shimo[1]) - 1])
     else:
-        number = list(range(1, 9))
         return shimo[0].upper() + str(number[int(shimo[1]) - 1])
 
 def check_direction(direction, side, number):
