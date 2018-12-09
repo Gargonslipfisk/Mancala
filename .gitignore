@@ -102,3 +102,9 @@ ENV/
 
 # Jetbrains
 .idea
+
+# Office
+.doc
+.docx
+.tmp
+.pdf
