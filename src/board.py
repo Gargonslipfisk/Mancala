@@ -8,6 +8,7 @@ import bokeh as bk
 import bokeh.plotting as bkpt
 import bokeh.models as bkmd
 from copy import deepcopy
+from f_string import f
 
 # -----------------------------------------------------------------------------
 # Constants
