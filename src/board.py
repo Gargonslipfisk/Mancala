@@ -8,7 +8,8 @@ import bokeh as bk
 import bokeh.plotting as bkpt
 import bokeh.models as bkmd
 from copy import deepcopy
-from f_string import f
+# from f_string import f
+from typing import Dict
 
 # -----------------------------------------------------------------------------
 # Constants
@@ -43,7 +44,6 @@ seed_coords = {1: [(0.0, 0.0)],
 # Classes
 # -----------------------------------------------------------------------------
 
-
 class SemiBoard:
     """
 
@@ -65,6 +65,27 @@ class Board:
         self.north = SemiBoard('a', 'b')
         self.south.opponent = self.north
         self.north.opponent = self.south
+
+    @staticmethod
+    def pos2str(pos: Dict) -> str:
+        dicto = {'1': 'D', '2': 'V'}
+
+        pos = [str(i) for i in pos.values()]
+        pos = [dicto[i[0]] + i[1] if len(i) == 2 else i for i in pos]
+        return ''.join(pos)
+
+    @property
+    def FEN(self):
+
+        def parser(*args):
+            return '/'.join(args)
+
+        nb = self.pos2str(self.north.back)
+        nf = self.pos2str(self.north.front)
+        sf = self.pos2str(self.south.front)
+        sb = self.pos2str(self.south.back)
+
+        return(parser(nb, nf, sf, sb))
 
 class BoardPic:
     """
@@ -150,3 +171,27 @@ class BoardPic:
     def update(self, board):
         self.update_board(board)
         self.update_pic()
+
+    @staticmethod
+    def pos2str(pos: Dict) -> str:
+        dicto = {'1': 'D', '2': 'V'}
+
+        pos = [str(i) for i in pos.values()]
+        pos = [dicto[i[0]] + i[1] if len(i) == 2 else i for i in pos]
+        return ''.join(pos)
+
+    @property
+    def FEN(self):
+
+        def parser(*args):
+            return '/'.join(args)
+
+        nb = self.pos2str(self.board.north.back)
+        nf = self.pos2str(self.board.north.front)
+        sf = self.pos2str(self.board.south.front)
+        sb = self.pos2str(self.board.south.back)
+
+        return(parser(nb, nf, sf, sb))
+
+
+

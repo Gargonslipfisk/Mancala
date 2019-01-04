@@ -100,11 +100,23 @@ ENV/
 # mypy
 .mypy_cache/
 
-# Jetbrains
+# Jetbrains #
+######################
 .idea
 
-# Office
-.doc
-.docx
-.tmp
-.pdf
+# Office #
+######################
+*.doc
+*.docx
+*.tmp
+*.pdf
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
